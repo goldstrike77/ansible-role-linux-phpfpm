@@ -1,0 +1,16 @@
+---
+- name: Add PHP YUM repositories
+  yum_repository:
+    name: '{{ php_repo_name }}'
+    description: '{{ php_repo_name }} RPM repository for Enterprise Linux'
+    file: '{{ php_repo_name }}'
+    baseurl: '{{ php_repo_url }}'
+    gpgcheck: no
+
+- name: Install the PHP packages
+  yum:
+    name: 'php{{ php_version }}-{{ item }}'
+    state: present
+  with_items:
+    - "{{ vars['php_packages'] }}"
+  register: php_updated

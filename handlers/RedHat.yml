@@ -1,0 +1,39 @@
+---
+- name: Ensure PHP service is enabled
+  systemd:
+    name: '{{ item }}'
+    enabled: yes
+    state: restarted
+    daemon_reload: yes
+  with_items:
+    - 'php{{ php_version }}-php-fpm.service'
+    - 'php-fpm_exporter.service'
+  listen: 'Reloading the PHP service'
+  when: ansible_distribution_major_version|int > 6
+
+- name: Ensure HTTP service is disabled
+  systemd:
+    name: '{{ disable_service }}'
+    enabled: no
+    state: stopped
+    masked: yes
+  listen: 'Reloading the PHP service'
+  when: ansible_distribution_major_version|int > 6
+
+- name: Allow PHP service port
+  firewalld:
+    port: '{{ item }}/tcp'
+    permanent: 'true'
+    state: 'enabled'
+  with_items:
+    - '{{ php_fpm_port }}'
+    - '{{ php_fpm_exporter_port }}'
+  listen: 'Reloading the PHP service'
+  when: ansible_distribution_major_version|int > 6
+
+- name: Reload the firewalld
+  service:
+    name: firewalld
+    state: reloaded
+  listen: 'Reloading the PHP service'
+  when: ansible_distribution_major_version|int > 6

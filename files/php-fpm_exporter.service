@@ -1,0 +1,17 @@
+[Unit]
+Description=Prometheus exporter for machine metrics, written in Go with pluggable metric collectors.
+Documentation=https://github.com/hipages/php-fpm_exporter
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/default/php-fpm_exporter
+User=nobody
+Group=nobody
+Type=simple
+LimitNOFILE=4096
+LimitNPROC=4096
+ExecStart=/usr/local/bin/php-fpm_exporter server $NODE_EXPORTER_OPTS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

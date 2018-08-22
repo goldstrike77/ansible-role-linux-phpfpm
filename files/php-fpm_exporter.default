@@ -1,0 +1,1 @@
+ARGS='-log.format="logger:syslog?appname=php-fpm_exporter&local=7"'

@@ -1,0 +1,42 @@
+---
+- include_vars: '{{ ansible_os_family }}.yml'
+
+- include: '{{ ansible_os_family }}.yml'
+
+- name: Set PHP binary PATH parameters
+  lineinfile:
+    dest: '{{ system_profile }}'
+    state: present
+    line: 'export PATH={{ php_shell_path }}'
+
+- name: PHP configureation file transfer
+  template:
+    src: '{{ php_version }}/{{ item.src }}'
+    dest: '{{ php_conf_path }}/{{ item.dest }}'
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - { src: 'php.ini.j2',      dest: '/php.ini' }
+    - { src: 'php-fpm.conf.j2', dest: '/php-fpm.conf' }
+    - { src: 'www.conf.j2',     dest: '/php-fpm.d/www.conf' }
+  register: php_config
+
+- name: PHP systemd service file transfer
+  template:
+    src: '{{ php_version }}/php-php-fpm.service.j2'
+    dest: '{{ system_service }}/php{{ php_version }}-php-fpm.service'
+    owner: root
+    group: root
+    mode: 0644
+  register: php_service
+
+- include: 'php-fpm_exporter.yml'
+
+- name: Reload the service
+  shell: echo ''
+  notify: 'Reloading the PHP service'
+  when: php_updated.changed or php_config.changed or php_service.changed or exporter_updated.changed or exporter_config.changed
+
+- name: Force the handler to run immediately
+  meta: flush_handlers

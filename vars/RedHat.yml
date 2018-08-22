@@ -1,0 +1,23 @@
+---
+php_packages:
+  - 'php'
+  - 'php-bcmath'
+  - 'php-cli'
+  - 'php-common'
+  - 'php-fpm'
+  - 'php-gd'
+  - 'php-intl'
+  - 'php-mbstring'
+  - 'php-mcrypt'
+  - 'php-mysqlnd'
+  - 'php-opcache'
+  - 'php-pear'
+  - 'php-pecl-apcu'
+  - 'php-pecl-memcached'
+  - 'php-pecl-mongo'
+  - 'php-pecl-redis4'
+  - 'php-pecl-xhprof'
+  - 'php-pdo'
+  - 'php-pgsql'
+
+disable_service: 'httpd.service'
