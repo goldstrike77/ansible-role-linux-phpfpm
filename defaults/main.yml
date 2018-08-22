@@ -1,4 +1,5 @@
 ---
+#php_version='56'
 php_repo_name: "remi"
 php_repo_url: "http://rpms.remirepo.net/enterprise/{{ansible_distribution_version.split('.')[0]}}/remi/{{ansible_architecture}}/"
 disable_gpg_check: yes
