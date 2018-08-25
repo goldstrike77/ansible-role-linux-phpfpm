@@ -1,8 +1,5 @@
 ---
 #php_version='56'
-php_repo_name: "remi"
-php_repo_url: "http://rpms.remirepo.net/enterprise/{{ansible_distribution_version.split('.')[0]}}/remi/{{ansible_architecture}}/"
-disable_gpg_check: yes
 php_fpm_port: '9000'
 php_conf_path: '/opt/remi/php{{ php_version }}/root/etc'
 php_shell_path: '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/opt/remi/php56/root/usr/bin:/opt/remi/php56/root/usr/sbin'
