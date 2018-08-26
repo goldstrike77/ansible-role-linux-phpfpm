@@ -20,9 +20,9 @@
 ; Note: The user is mandatory. If the group is not set, the default user's group
 ;       will be used.
 ; RPM: apache user chosen to provide access to the same directories as httpd
-user = {{ user }}
+user = {{ php_user }}
 ; RPM: Keep a group allowed to write in log dir.
-group = {{ group }}
+group = {{ php_group }}
 
 ; The address on which to accept FastCGI requests.
 ; Valid syntaxes are:
@@ -36,19 +36,19 @@ group = {{ group }}
 ;                            (IPv6 and IPv4-mapped) on a specific port;
 ;   '/path/to/unix/socket' - to listen on a unix socket.
 ; Note: This value is mandatory.
-listen = {{ listen }}
+listen = {{ php_listen }}
 
 ; Set listen(2) backlog.
 ; Default Value: 65535
-listen.backlog = {{ listen_backlog }}
+listen.backlog = {{ php_listen_backlog }}
 
 ; Set permissions for unix socket, if one is used. In Linux, read/write
 ; permissions must be set in order to allow connections from a web server.
 ; Default Values: user and group are set as the running user
 ;                 mode is set to 0660
-listen.owner = {{ listen_owner }}
-listen.group = {{ listen_group }}
-listen.mode = {{ listen_mode }}
+listen.owner = {{ php_listen_owner }}
+listen.group = {{ php_listen_group }}
+listen.mode = {{ php_listen_mode }}
 
 ; When POSIX Access Control Lists are supported you can set them using
 ; these options, value is a comma separated list of user/group names.
@@ -102,7 +102,7 @@ listen.allowed_clients = {{ listen_allowed_clients }}
 ;             pm.process_idle_timeout   - The number of seconds after which
 ;                                         an idle process will be killed.
 ; Note: This value is mandatory.
-pm = {{ pm }}
+pm = {{ php_pm }}
 
 ; The number of child processes to be created when pm is set to 'static' and the
 ; maximum number of child processes when pm is set to 'dynamic' or 'ondemand'.
