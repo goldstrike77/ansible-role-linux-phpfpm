@@ -24,7 +24,7 @@ pid = /opt/remi/php56/root/var/run/php-fpm/php-fpm.pid
 ; in a local file.
 ; Default Value: /opt/remi/php56/root/var/log/php-fpm.log
 ; error_log = /opt/remi/php56/root/var/log/php-fpm/error.log
-error_log = {{ error_log }}
+error_log = {{ php_error_log }}
 
 ; syslog_facility is used to specify what type of program is logging the
 ; message. This lets syslogd specify that messages from different facilities
