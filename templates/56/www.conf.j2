@@ -36,7 +36,7 @@ group = {{ php_group }}
 ;                            (IPv6 and IPv4-mapped) on a specific port;
 ;   '/path/to/unix/socket' - to listen on a unix socket.
 ; Note: This value is mandatory.
-listen = {{ php_listen }}
+listen = {{ php_listen }}:{{ php_fpm_port }}
 
 ; Set listen(2) backlog.
 ; Default Value: 65535
@@ -141,7 +141,7 @@ pm.max_spare_servers = {{ ((ansible_memtotal_mb - 2048) / 200)|int }}
 ; This can be useful to work around memory leaks in 3rd party libraries. For
 ; endless request processing specify '0'. Equivalent to PHP_FCGI_MAX_REQUESTS.
 ; Default Value: 0
-pm.max_requests = 500
+pm.max_requests = {{ php_max_requests }}
 
 ; The URI to view the FPM status page. If this value is not set, no URI will be
 ; recognized as a status page. It shows the following informations:
