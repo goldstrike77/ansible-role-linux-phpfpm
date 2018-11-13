@@ -1,7 +1,7 @@
 ansible-role-linux-phpfpm
-=========
+=========================
 
-Do not use in production environment.
+Testing and development purposes only, should not be used in a production environment.
 
 Install and configure PHP-FPM on linux operating system.
 
