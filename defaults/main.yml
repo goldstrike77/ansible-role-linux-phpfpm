@@ -5,6 +5,13 @@ php_shell_path: '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/r
 php_conf_path: '/opt/remi/php{{ php_version }}/root/etc'
 system_profile: '/etc/profile'
 system_service: '/lib/systemd/system'
+environments: 'SIT'
+consul_is_register: false
+consul_exporter_token: '00000000-0000-0000-0000-000000000000'
+consul_clients:
+  - '1.1.1.1'
+  - '1.1.1.2'
+consul_http_port: '8500'
 
 # Listen port #
 php_fpm_port: '9000' # php-fpm instance
