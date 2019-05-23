@@ -1,6 +1,6 @@
 ---
 php_repo_name: "remi"
-php_repo_url: "http://rpms.remirepo.net/enterprise/{{ansible_distribution_version.split('.')[0]}}/remi/{{ansible_architecture}}/"
+php_repo_url: "http://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/{{ansible_distribution_version.split('.')[0]}}/remi/{{ansible_architecture}}/"
 disable_gpg_check: yes
 php_packages:
   - 'php'

@@ -5,12 +5,15 @@
     description: '{{ php_repo_name }} RPM repository for Enterprise Linux'
     file: '{{ php_repo_name }}'
     baseurl: '{{ php_repo_url }}'
-    gpgcheck: no
+    gpgcheck: 'no'
+    timeout: '60'
 
 - name: Install the PHP packages
   yum:
     name: 'php{{ php_version }}-{{ item }}'
     state: present
+    validate_certs: 'no'
+    disable_gpg_check: 'yes'
   with_items:
     - "{{ vars['php_packages'] }}"
   register: php_updated

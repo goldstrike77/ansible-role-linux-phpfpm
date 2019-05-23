@@ -33,7 +33,7 @@
     mode: 0644
   register: php_service
 
-- include: 'php-fpm_exporter.yml'
+- include: 'exporter.yml'
 
 - name: Reload the service
   shell: echo ''
