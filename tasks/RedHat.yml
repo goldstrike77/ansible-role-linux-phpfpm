@@ -1,4 +1,7 @@
 ---
+- name: Include OS-specific variables
+  include_vars: '{{ ansible_os_family }}.yml'
+
 - name: Add PHP YUM repositories
   yum_repository:
     name: '{{ php_repo_name }}'
@@ -11,7 +14,7 @@
 - name: Install the PHP packages
   yum:
     name: 'php{{ php_version }}-{{ item }}'
-    state: present
+    state: 'present'
     validate_certs: 'no'
     disable_gpg_check: 'yes'
   with_items:

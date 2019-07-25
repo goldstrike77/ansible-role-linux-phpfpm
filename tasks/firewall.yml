@@ -1,0 +1,11 @@
+---
+- name: Allow php-fpm service port
+  firewalld:
+    port: '{{ item }}/tcp'
+    zone: 'public'
+    permanent: 'true'
+    immediate: 'true'
+    state: 'enabled'
+  loop:
+    - '{{ php_fpm_port }}'
+    - '{{ php_fpm_exporter_port }}'

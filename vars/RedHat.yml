@@ -1,7 +1,6 @@
 ---
 php_repo_name: "remi"
 php_repo_url: "http://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/{{ansible_distribution_version.split('.')[0]}}/remi/{{ansible_architecture}}/"
-disable_gpg_check: yes
 php_packages:
   - 'php'
   - 'php-bcmath'
@@ -17,10 +16,9 @@ php_packages:
   - 'php-pear'
   - 'php-pecl-apcu'
   - 'php-pecl-memcached'
-  - 'php-pecl-mongo'
+  - 'php-pecl-mongodb'
   - 'php-pecl-redis4'
-  - 'php-pecl-xhprof'
   - 'php-pdo'
   - 'php-pgsql'
 
-disable_service: 'httpd.service'
+php_disable_service: 'httpd.service'

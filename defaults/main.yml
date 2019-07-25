@@ -1,28 +1,25 @@
 ---
 # General parameters #
-#php_version='56'
-php_shell_path: '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/opt/remi/php56/root/usr/bin:/opt/remi/php56/root/usr/sbin'
-php_conf_path: '/opt/remi/php{{ php_version }}/root/etc'
-system_profile: '/etc/profile'
-system_service: '/lib/systemd/system'
-environments: 'SIT'
-consul_is_register: false
-consul_exporter_token: '00000000-0000-0000-0000-000000000000'
-consul_clients:
-  - '1.1.1.1'
-  - '1.1.1.2'
-consul_http_port: '8500'
+php_is_install: false # A boolean value, whether install the php-fpm.
+php_version: '56' # Specify the php-fpm version.
+
+# Service Mesh #
+environments: 'SIT' # Define the service environment.
+consul_public_register: false # Whether register a exporter service with public consul client.
+consul_public_exporter_token: '00000000-0000-0000-0000-000000000000' # Public Consul client ACL token.
+consul_public_http_port: '8500' # The consul HTTP API port.
+consul_public_clients: # List of public consul clients.
+  - '127.0.0.1'
 
 # Listen port #
 php_fpm_port: '9000' # php-fpm instance
 php_fpm_exporter_port: '9253' # Prometheus exporter
 
-# PHP Environment Variables #
+# PHP Variables #
 php_allow_url_fopen: 'On' # Whether to allow accessing URL object like files
 php_allow_url_include: 'Off' # Whether to allow use of URL-aware with the include/require functions
 php_date_timezone: 'Asia/Shanghai' # The default timezone used by all date/time functions
 php_default_socket_timeout: '60' # Default timeout for socket based streams in seconds
-php_disable_functions: 'php_uname, getmyuid, getmypid, passthru, leak, listen, diskfreespace, tmpfile, link, ignore_user_abord, shell_exec, dl, set_time_limit, exec, system, highlight_file, source, show_source, fpaththru, virtual, posix_ctermid, posix_getcwd, posix_getegid, posix_geteuid, posix_getgid, posix_getgrgid, posix_getgrnam, posix_getgroups, posix_getlogin, posix_getpgid, posix_getpgrp, posix_getpid, posix, _getppid, posix_getpwnam, posix_getpwuid, posix_getrlimit, posix_getsid, posix_getuid, posix_isatty, posix_kill, posix_mkfifo, posix_setegid, posix_seteuid, posix_setgid, posix_setpgid, posix_setsid, posix_setuid, posix_times, posix_ttyname, posix_uname, proc_open, proc_close, proc_get_status, proc_nice, proc_terminate, phpinfo' # Disable certain functions for security reasons
 php_emergency_restart_interval: '60' # Interval of time to determine when a graceful restart in seconds
 php_emergency_restart_threshold: '20' # Number of child processes exit with SIGSEGV or SIGBUS signal
 php_error_log: 'syslog' # Send an error message to the defined error handling routines
