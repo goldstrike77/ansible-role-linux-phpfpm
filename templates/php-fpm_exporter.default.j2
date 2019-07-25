@@ -1,0 +1,1 @@
+PHP_FPM_EXPORTER_OPTS='--log.format="logger:syslog?appname=php-fpm_exporter&local=7" --phpfpm.scrape-uri tcp://127.0.0.1:{{ php_fpm_port }}/status --web.listen-address ":{{ php_fpm_exporter_port }}"'

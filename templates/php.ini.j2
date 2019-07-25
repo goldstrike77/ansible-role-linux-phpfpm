@@ -340,7 +340,7 @@ disable_classes =
 ; the file operations performed.
 ; Note: if open_basedir is set, the cache is disabled
 ; http://php.net/realpath-cache-size
-;realpath_cache_size = 4096k
+realpath_cache_size = {{ php_realpath_cache_size | default('4') }}M
 
 ; Duration of time, in seconds for which to cache realpath information for a given
 ; file or directory. For systems with rarely changing files, consider increasing this
@@ -373,7 +373,7 @@ zend.enable_gc = On
 ; threat in any way, but it makes it possible to determine whether you use PHP
 ; on your server or not.
 ; http://php.net/expose-php
-expose_php = On
+expose_php = {{ php_expose_php | default('Off') }}}
 
 ;;;;;;;;;;;;;;;;;;;
 ; Resource Limits ;
@@ -382,7 +382,7 @@ expose_php = On
 ; Maximum execution time of each script, in seconds
 ; http://php.net/max-execution-time
 ; Note: This directive is hardcoded to 0 for the CLI SAPI
-max_execution_time = 30
+max_execution_time = {{ php_max_execution_time | default ('30') }}
 
 ; Maximum amount of time each script may spend parsing request data. It's a good
 ; idea to limit this time on productions servers in order to eliminate unexpectedly
@@ -392,7 +392,7 @@ max_execution_time = 30
 ; Development Value: 60 (60 seconds)
 ; Production Value: 60 (60 seconds)
 ; http://php.net/max-input-time
-max_input_time = 60
+max_input_time = {{ php_max_input_time | default('60') }}
 
 ; Maximum input variable nesting level
 ; http://php.net/max-input-nesting-level
@@ -403,7 +403,7 @@ max_input_time = 60
 
 ; Maximum amount of memory a script may consume (128MB)
 ; http://php.net/memory-limit
-memory_limit = 128M
+memory_limit = {{ php_memory_limit | default('128') }}M
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Error handling and logging ;
@@ -585,7 +585,7 @@ html_errors = On
 ; Example:
 ;error_log = php_errors.log
 ; Log errors to syslog (Event Log on Windows).
-;error_log = syslog
+error_log = {{ php_error_log | default('syslog') }}
 
 ; The syslog ident is a string which is prepended to every message logged
 ; to syslog. Only used when error_log is set to syslog.
@@ -690,7 +690,7 @@ auto_globals_jit = On
 ; Its value may be 0 to disable the limit. It is ignored if POST data reading
 ; is disabled through enable_post_data_reading.
 ; http://php.net/post-max-size
-post_max_size = 8M
+post_max_size = {{ php_post_max_size | default('8') }}M
 
 ; Automatically add files before PHP document.
 ; http://php.net/auto-prepend-file
@@ -833,19 +833,19 @@ enable_dl = Off
 
 ; Whether to allow HTTP file uploads.
 ; http://php.net/file-uploads
-file_uploads = On
+file_uploads = {{ php_file_uploads | default('On') }}
 
 ; Temporary directory for HTTP uploaded files (will use system default if not
 ; specified).
 ; http://php.net/upload-tmp-dir
-;upload_tmp_dir =
+upload_tmp_dir = {{ php_upload_tmp_dir | default('/tmp') }}
 
 ; Maximum allowed size for uploaded files.
 ; http://php.net/upload-max-filesize
-upload_max_filesize = 2M
+upload_max_filesize = {{ php_upload_max_filesize | default('2') }}M
 
 ; Maximum number of files that can be uploaded via a single request
-max_file_uploads = 20
+max_file_uploads = {{ php_max_file_uploads | default('20') }}
 
 ;;;;;;;;;;;;;;;;;;
 ; Fopen wrappers ;
@@ -853,11 +853,11 @@ max_file_uploads = 20
 
 ; Whether to allow the treatment of URLs (like http:// or ftp://) as files.
 ; http://php.net/allow-url-fopen
-allow_url_fopen = On
+allow_url_fopen = {{ php_allow_url_fopen | default('On') }}
 
 ; Whether to allow include/require to open URLs (like http:// or ftp://) as files.
 ; http://php.net/allow-url-include
-allow_url_include = Off
+allow_url_include = {{ php_allow_url_include | default('Off') }}
 
 ; Define the anonymous ftp password (your email address). PHP's default setting
 ; for this is empty.
@@ -870,7 +870,7 @@ allow_url_include = Off
 
 ; Default timeout for socket based streams (seconds)
 ; http://php.net/default-socket-timeout
-default_socket_timeout = 60
+default_socket_timeout = {{ php_default_socket_timeout | default('60') }}
 
 ; If your scripts have to deal with files from Macintosh systems,
 ; or you are running on a Mac and need to deal with files from
@@ -919,7 +919,7 @@ cli_server.color = On
 [Date]
 ; Defines the default timezone used by the date functions
 ; http://php.net/date.timezone
-;date.timezone =
+date.timezone = {{ php_date_timezone | default('UTC') }}
 
 ; http://php.net/date.default-latitude
 ;date.default_latitude = 31.7667

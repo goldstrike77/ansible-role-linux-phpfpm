@@ -1,19 +1,7 @@
 ---
-- name: Ensure PHP service is enabled
+- name: Ensure PHP-FPM service is enabled
   systemd:
-    name: '{{ item }}'
-    enabled: yes
-    state: restarted
-    daemon_reload: yes
-  with_items:
-    - 'php{{ php_version }}-php-fpm.service'
-    - 'php-fpm_exporter.service'
-  listen: 'Reloading the PHP service'
-
-- name: Ensure HTTP service is disabled
-  systemd:
-    name: '{{ php_disable_service }}'
-    enabled: no
-    state: stopped
-    masked: yes
-  listen: 'Reloading the PHP service'
+    name: 'php{{ php_version }}-php-fpm.service'
+    enabled: 'yes'
+    state: 'restarted'
+    daemon_reload: 'yes'

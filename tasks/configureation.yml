@@ -20,15 +20,15 @@
     - { regexp: '^LimitMEMLOCK=', line: 'LimitMEMLOCK=infinity' }
   register: php_service
 
-#- name: PHP configureation file transfer
-#  template:
-#    src: '{{ php_version }}/{{ item.src }}'
-#    dest: '{{ php_conf_path }}/{{ item.dest }}'
-#    owner: root
-#    group: root
-#    mode: 0644
-#  with_items:
-#    - { src: 'php.ini.j2',      dest: '/php.ini' }
-#    - { src: 'php-fpm.conf.j2', dest: '/php-fpm.conf' }
-#    - { src: 'www.conf.j2',     dest: '/php-fpm.d/www.conf' }
-#  register: php_config
+- name: PHP configureation file transfer
+  template:
+    src: '{{ item.src }}.j2'
+    dest: '{{ item.dest }}/{{ item.src }}'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  with_items:
+    - { src: 'php.ini',      dest: '/etc/opt/remi/php{{ php_version }}' }
+    - { src: 'php-fpm.conf', dest: '/etc/opt/remi/php{{ php_version }}' }
+    - { src: 'www.conf',     dest: '/etc/opt/remi/php{{ php_version }}/php-fpm.d' }
+  register: php_config

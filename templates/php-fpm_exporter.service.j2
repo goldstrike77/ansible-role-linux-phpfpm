@@ -10,7 +10,7 @@ Group=nobody
 Type=simple
 LimitNOFILE=4096
 LimitNPROC=4096
-ExecStart=/usr/local/bin/php-fpm_exporter server $NODE_EXPORTER_OPTS
+ExecStart=/usr/local/bin/php-fpm_exporter server $PHP_FPM_EXPORTER_OPTS
 Restart=on-failure
 
 [Install]
