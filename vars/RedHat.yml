@@ -20,5 +20,3 @@ php_packages:
   - 'php-pecl-redis4'
   - 'php-pdo'
   - 'php-pgsql'
-
-php_disable_service: 'httpd.service'

@@ -11,17 +11,17 @@
 - name: Configuration the php-fpm
   include: 'configureation.yml'
 
+- name: Reload the PHP-FPM service
+  shell: echo ''
+  notify: 'Ensure PHP-FPM service is enabled'
+  when: php_updated is changed or php_config is changed or php_service is changed
+
+- name: Force the handler to run immediately
+  meta: flush_handlers
+
 - name: Include prometheus exporter tasks
   include: 'exporter.yml'
 
 - name: Registered with HashiCorp Consul
   include: 'register.yml'
   when: consul_public_register
-
-- name: Reload the service
-  shell: echo ''
-  notify: 'Ensure PHP service is enabled'
-  when: php_updated is changed or php_config is changed or php_service is changed
-
-- name: Force the handler to run immediately
-  meta: flush_handlers

@@ -1,5 +1,4 @@
 ---
-php_conf_path: '/opt/remi/php{{ php_version }}/root/etc'
 php_disable_functions: # Disable certain functions for security reasons
   - 'diskfreespace'
   - 'dl'

@@ -312,7 +312,7 @@ serialize_precision = -1
 ; This directive allows you to disable certain functions for security reasons.
 ; It receives a comma-delimited list of function names.
 ; http://php.net/disable-functions
-disable_functions =
+{% if php_disable_functions is defined %}disable_functions = {{ ", ".join(vars["php_disable_functions"]) }}{% endif %}
 
 ; This directive allows you to disable certain classes for security reasons.
 ; It receives a comma-delimited list of class names.
@@ -373,7 +373,7 @@ zend.enable_gc = On
 ; threat in any way, but it makes it possible to determine whether you use PHP
 ; on your server or not.
 ; http://php.net/expose-php
-expose_php = {{ php_expose_php | default('Off') }}}
+expose_php = {{ php_expose_php | default('Off') }}
 
 ;;;;;;;;;;;;;;;;;;;
 ; Resource Limits ;
