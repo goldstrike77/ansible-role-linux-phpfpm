@@ -3,9 +3,11 @@
 php_is_install: false # A boolean value, whether install the php-fpm.
 php_version: '56' # Specify the php-fpm version.
 php_selinux: 'false' # SELinux security policy.
+php_path: '/data' # Specify the php-fpm installation directory.
 
 # Service Mesh #
 environments: 'SIT' # Define the service environment.
+exporter_is_install: false # Whether to install prometheus exporter.
 consul_public_register: false # Whether register a exporter service with public consul client.
 consul_public_exporter_token: '00000000-0000-0000-0000-000000000000' # Public Consul client ACL token.
 consul_public_http_port: '8500' # The consul HTTP API port.
@@ -43,7 +45,6 @@ php_process_control_timeout: '10' # Time limit for child processes to wait for a
 php_user: 'nobody' # Unix user of processes.
 php_group: 'nobody' # Unix group of processes.
 php_listen: '0.0.0.0' # The address on which to accept FastCGI requests.
-php_listen_allowed_clients: 'any' # List of addresses of FastCGI clients which are allowed to connect.
 php_listen_backlog: '16384' # The maximum rate at which a server can accept new TCP connections on a socket.
 php_listen_owner: 'nobody' # Listen owner user.
 php_listen_group: 'nobody' # Listen owner group.

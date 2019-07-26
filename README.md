@@ -47,9 +47,11 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 ##### General parameters
 * `php_version`: Specify the php-fpm version.
 * `php_selinux`: SELinux security policy.
+* `php_path`: Specify the php-fpm installation directory.
 
 ##### Service Mesh
 * `environments`: Define the service environment.
+* `exporter_is_install`: Whether to install prometheus exporter.
 * `consul_public_register`: Whether register a exporter service with public consul client.
 * `consul_public_exporter_token`: Public Consul client ACL token.
 * `consul_public_http_port`: The consul HTTP API port.
@@ -86,7 +88,6 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 * `php_user`: Unix user of processes.
 * `php_group`: Unix group of processes.
 * `php_listen`: The address on which to accept FastCGI requests.
-* `php_listen_allowed_clients`: List of addresses of FastCGI clients which are allowed to connect.
 * `php_listen_backlog`: The maximum rate at which a server can accept new TCP connections on a socket.
 * `php_listen_owner`: Listen owner user.
 * `php_listen_group`: Listen owner group.
@@ -121,6 +122,7 @@ You can also use the group_vars or the host_vars files for setting the variables
 
     php_version: '56'
     php_selinux: 'false'
+    php_path: '/data'
     php_fpm_port: '9000'
     php_fpm_exporter_port: '9253'
     php_allow_url_fopen: 'On'
@@ -145,7 +147,6 @@ You can also use the group_vars or the host_vars files for setting the variables
     php_user: 'nobody'
     php_group: 'nobody'
     php_listen: '0.0.0.0'
-    php_listen_allowed_clients: 'any'
     php_listen_backlog: '16384'
     php_listen_owner: 'nobody'
     php_listen_group: 'nobody'
@@ -153,6 +154,7 @@ You can also use the group_vars or the host_vars files for setting the variables
     php_pm: 'dynamic'
     php_pm_max_requests: '300'
     environments: 'SIT'
+    exporter_is_install: false
     consul_public_register: false
     consul_public_exporter_token: '00000000-0000-0000-0000-000000000000'
     consul_public_http_port: '8500'

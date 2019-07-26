@@ -6,20 +6,6 @@
     regexp: '^source /opt/remi/php'
     line: 'source /opt/remi/php{{ php_version }}/enable'
 
-- name: PHP-FPM systemd service file modify
-  lineinfile:
-    state: 'present'
-    dest: '/lib/systemd/system/php{{ php_version }}-php-fpm.service'
-    insertafter: '\[Service\]'
-    regexp: '{{ item.regexp }}'
-    line: '{{ item.line }}'
-  loop:
-    - { regexp: '^LimitNOFILE=',  line: 'LimitNOFILE=65535' }
-    - { regexp: '^LimitNPROC=',   line: 'LimitNPROC=65535' }
-    - { regexp: '^LimitCORE=',    line: 'LimitCORE=infinity' }
-    - { regexp: '^LimitMEMLOCK=', line: 'LimitMEMLOCK=infinity' }
-  register: php_service
-
 - name: PHP configureation file transfer
   template:
     src: '{{ item.src }}.j2'
