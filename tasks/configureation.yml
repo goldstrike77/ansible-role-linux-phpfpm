@@ -10,6 +10,7 @@
   template:
     src: '{{ item.src }}.j2'
     dest: '{{ item.dest }}/{{ item.src }}'
+    backup: 'yes'
     owner: 'root'
     group: 'root'
     mode: '0644'

@@ -17,6 +17,8 @@
     state: 'present'
     validate_certs: 'no'
     disable_gpg_check: 'yes'
-  with_items:
-    - "{{ vars['php_packages'] }}"
+  loop: '{{ php_packages|flatten(levels=1) }}'
   register: php_updated
+  until: php_updated is succeeded
+  retries: 3
+  delay: 5
