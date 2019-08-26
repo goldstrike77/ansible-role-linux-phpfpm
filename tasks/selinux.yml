@@ -26,4 +26,4 @@
   loop:
     - '{{ php_fpm_port }}'
     - '{{ php_fpm_exporter_port }}'
-  when: php_selinux
+  when: php_selinux | bool
