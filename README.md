@@ -50,6 +50,8 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 * `php_path`: Specify the php-fpm installation directory.
 
 ##### Service Mesh
+* `subscription`: Define the service subscription.
+* `region`: Define the service region.
 * `environments`: Define the service environment.
 * `exporter_is_install`: Whether to install prometheus exporter.
 * `consul_public_register`: Whether register a exporter service with public consul client.
@@ -94,7 +96,6 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 * `php_listen_mode`: Listen permissions.
 * `php_pm`: Child process control manager.
 * `php_pm_max_requests`: The number of requests each child process should execute before respawning.
-
 
 ### Other parameters
 There are some variables in vars/main.yml:
@@ -153,6 +154,8 @@ You can also use the group_vars or the host_vars files for setting the variables
     php_listen_mode: '0660'
     php_pm: 'dynamic'
     php_pm_max_requests: '300'
+    subscription: 'default'
+    region: 'default'
     environments: 'SIT'
     exporter_is_install: false
     consul_public_register: false
