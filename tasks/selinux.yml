@@ -1,4 +1,8 @@
 ---
+- name: Set php_selinux to false for default
+  set_fact:
+    php_selinux: '{{ false }}'
+
 - name: Get getenforce binary
   stat:
     path: '/usr/sbin/getenforce'

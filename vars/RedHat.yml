@@ -1,5 +1,5 @@
 ---
-php_repo_name: "remi"
+php_repo_name: 'remi'
 php_repo_url: "http://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/{{ansible_distribution_version.split('.')[0]}}/remi/{{ansible_architecture}}/"
 php_packages:
   - 'php'
@@ -20,3 +20,5 @@ php_packages:
   - 'php-pecl-redis4'
   - 'php-pdo'
   - 'php-pgsql'
+  - 'policycoreutils-python'
+  - 'libselinux-utils'

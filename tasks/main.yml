@@ -1,17 +1,4 @@
 ---
-- name: Creating php-fpm installs folder
-  file:
-    dest: '{{ php_path }}/remi'
-    state: 'directory'
-
-- name: Mount and bind php-fpm remi folder structure
-  mount:
-    src: '{{ php_path }}/remi'
-    path: '/opt/remi'
-    opts: 'bind'
-    state: 'mounted'
-    fstype: 'none'
-
 - name: Include tasks for specific OS
   include: '{{ ansible_os_family }}.yml'
 

@@ -2,8 +2,6 @@
 # General parameters #
 php_is_install: false # A boolean value, whether install the php-fpm.
 php_version: '56' # Specify the php-fpm version.
-php_selinux: 'false' # SELinux security policy.
-php_path: '/data' # Specify the php-fpm installation directory.
 
 # Service Mesh #
 environments: 'SIT' # Define the service environment.

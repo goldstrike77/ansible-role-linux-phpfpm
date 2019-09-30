@@ -46,8 +46,6 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 
 ##### General parameters
 * `php_version`: Specify the php-fpm version.
-* `php_selinux`: SELinux security policy.
-* `php_path`: Specify the php-fpm installation directory.
 
 ##### Service Mesh
 * `environments`: Define the service environment.
@@ -100,7 +98,7 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 There are some variables in vars/main.yml:
 
 ## Dependencies
-- Ansible versions > 2.6 are supported.
+- Ansible versions >= 2.8 are supported.
 
 ## Example
 
@@ -121,8 +119,6 @@ Including an example of how to use your role (for instance, with variables passe
 You can also use the group_vars or the host_vars files for setting the variables needed for this role. File you should change: group_vars/all or host_vars/`group_name`
 
     php_version: '56'
-    php_selinux: 'false'
-    php_path: '/data'
     php_fpm_port: '9000'
     php_fpm_exporter_port: '9253'
     php_allow_url_fopen: 'On'
