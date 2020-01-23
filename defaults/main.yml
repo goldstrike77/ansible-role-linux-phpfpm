@@ -3,21 +3,6 @@
 php_is_install: false # A boolean value, whether install the php-fpm.
 php_version: '56' # Specify the php-fpm version.
 
-# Service Mesh #
-environments: 'SIT' # Define the service environment.
-#tags: # Define the service custom label.
-#  subscription: 'default'
-#  owner: 'nobody'
-#  department: 'Infrastructure'
-#  organization: 'The Company'
-#  region: 'IDC01'
-exporter_is_install: false # Whether to install prometheus exporter.
-consul_public_register: false # Whether register a exporter service with public consul client.
-consul_public_exporter_token: '00000000-0000-0000-0000-000000000000' # Public Consul client ACL token.
-consul_public_http_port: '8500' # The consul HTTP API port.
-consul_public_clients: # List of public consul clients.
-  - '127.0.0.1'
-
 # Listen port #
 php_fpm_port: '9000' # php-fpm instance.
 php_fpm_exporter_port: '9253' # Prometheus exporter.
@@ -55,3 +40,19 @@ php_listen_group: 'nobody' # Listen owner group.
 php_listen_mode: '0660' # Listen permissions.
 php_pm: 'dynamic' # Child process control manager.
 php_pm_max_requests: '300' # The number of requests each child process should execute before respawning.
+
+# Service Mesh #
+environments: 'Development' # Define the service environment.
+#tags: # Define the service custom label.
+#  subscription: 'default'
+#  owner: 'nobody'
+#  department: 'Infrastructure'
+#  organization: 'The Company'
+#  region: 'IDC01'
+exporter_is_install: false # Whether to install prometheus exporter.
+consul_public_register: false # Whether register a exporter service with public consul client.
+consul_public_exporter_token: '00000000-0000-0000-0000-000000000000' # Public Consul client ACL token.
+consul_public_http_prot: 'https' # The consul Hypertext Transfer Protocol.
+consul_public_http_port: '8500' # The consul HTTP API port.
+consul_public_clients: # List of public consul clients.
+  - '127.0.0.1'

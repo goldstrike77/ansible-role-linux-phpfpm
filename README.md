@@ -47,15 +47,6 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 ##### General parameters
 * `php_version`: Specify the php-fpm version.
 
-##### Service Mesh
-* `environments`: Define the service environment.
-* `tags`: Define the service custom label.
-* `exporter_is_install`: Whether to install prometheus exporter.
-* `consul_public_register`: false Whether register a exporter service with public consul client.
-* `consul_public_exporter_token`: Public Consul client ACL token.
-* `consul_public_clients`: List of public consul clients.
-* `consul_public_http_port`: The consul HTTP API port.
-
 ##### Listen port
 * `php_fpm_port`: php-fpm instance.
 * `php_fpm_exporter_port`: Prometheus exporter.
@@ -93,6 +84,16 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 * `php_listen_mode`: Listen permissions.
 * `php_pm`: Child process control manager.
 * `php_pm_max_requests`: The number of requests each child process should execute before respawning.
+
+##### Service Mesh
+* `environments`: Define the service environment.
+* `tags`: Define the service custom label.
+* `exporter_is_install`: Whether to install prometheus exporter.
+* `consul_public_register`: false Whether register a exporter service with public consul client.
+* `consul_public_exporter_token`: Public Consul client ACL token.
+* `consul_public_http_prot`: The consul Hypertext Transfer Protocol.
+* `consul_public_clients`: List of public consul clients.
+* `consul_public_http_port`: The consul HTTP API port.
 
 ### Other parameters
 There are some variables in vars/main.yml:
@@ -149,7 +150,7 @@ You can also use the group_vars or the host_vars files for setting the variables
     php_listen_mode: '0660'
     php_pm: 'dynamic'
     php_pm_max_requests: '300'
-    environments: 'SIT'
+    environments: 'Development'
     tags:
       subscription: 'default'
       owner: 'nobody'
@@ -159,6 +160,7 @@ You can also use the group_vars or the host_vars files for setting the variables
     exporter_is_install: false
     consul_public_register: false
     consul_public_exporter_token: '00000000-0000-0000-0000-000000000000'
+    consul_public_http_prot: 'https'
     consul_public_http_port: '8500'
     consul_public_clients:
       - '127.0.0.1'
