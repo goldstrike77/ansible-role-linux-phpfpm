@@ -2,6 +2,17 @@
 - name: Include OS-specific variables
   include_vars: '{{ ansible_os_family }}.yml'
 
+- name: Install the PHP dependents packages
+  yum:
+    name: '{{ php_dependent_packages }}'
+    state: 'present'
+    validate_certs: 'no'
+    disable_gpg_check: 'yes'
+  register: yum_status
+  until: yum_status is succeeded
+  retries: 5
+  delay: 2
+
 - name: Add PHP YUM repositories
   yum_repository:
     name: '{{ php_repo_name }}'
@@ -20,5 +31,5 @@
   loop: '{{ php_packages|flatten(levels=1) }}'
   register: php_updated
   until: php_updated is succeeded
-  retries: 3
-  delay: 5
+  retries: 5
+  delay: 2

@@ -1,1 +1,1 @@
-PHP_FPM_EXPORTER_OPTS='--phpfpm.scrape-uri tcp://127.0.0.1:{{ php_fpm_port }}/status --web.listen-address ":{{ php_fpm_exporter_port }}"'
+PHP_FPM_EXPORTER_OPTS='--phpfpm.scrape-uri tcp://{{ ansible_default_ipv4.address }}:{{ php_fpm_port }}/status --web.listen-address "{{ ansible_default_ipv4.address }}:{{ php_fpm_exporter_port }}"'

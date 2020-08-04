@@ -26,11 +26,11 @@ __Table of Contents__
 - [Contributors](#Contributors)
 
 ## Overview
-This Ansible role installs PHP on linux operating system, including establishing a filesystem structure and server configuration with some common operational features.
+PHP is a general-purpose scripting language that is especially suited to web development.
 
 ## Requirements
 ### Operating systems
-This role will work on the following operating systems:
+This Ansible role installs PHP on linux operating system, including establishing a filesystem structure and server configuration with some common operational features, Will works on the following operating systems:
 
   * CentOS 7
 
@@ -77,7 +77,6 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 ##### PHP-FPM POOL Variables
 * `php_user`: Unix user of processes.
 * `php_group`: Unix group of processes.
-* `php_listen`: The address on which to accept FastCGI requests.
 * `php_listen_backlog`: The maximum rate at which a server can accept new TCP connections on a socket.
 * `php_listen_owner`: Listen owner user.
 * `php_listen_group`: Listen owner group.
@@ -87,9 +86,11 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 
 ##### Service Mesh
 * `environments`: Define the service environment.
+* `datacenter`: Define the DataCenter.
+* `domain`: Define the Domain.
 * `tags`: Define the service custom label.
 * `exporter_is_install`: Whether to install prometheus exporter.
-* `consul_public_register`: false Whether register a exporter service with public consul client.
+* `consul_public_register`: Whether register a exporter service with public consul client.
 * `consul_public_exporter_token`: Public Consul client ACL token.
 * `consul_public_http_prot`: The consul Hypertext Transfer Protocol.
 * `consul_public_clients`: List of public consul clients.
@@ -99,7 +100,8 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 There are some variables in vars/main.yml:
 
 ## Dependencies
-- Ansible versions >= 2.8 are supported.
+- Ansible versions >= 2.8
+- Python >= 2.7.5
 
 ## Example
 
@@ -111,59 +113,64 @@ See tests/inventory for an example.
 ### Vars in role configuration
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: all
-      roles:
-         - role: ansible-role-linux-phpfpm
-           php_version: '56'
+```yaml
+- hosts: all
+  roles:
+     - role: ansible-role-linux-phpfpm
+       php_version: '56'
+```
 
 ### Combination of group vars and playbook
 You can also use the group_vars or the host_vars files for setting the variables needed for this role. File you should change: group_vars/all or host_vars/`group_name`
 
-    php_version: '56'
-    php_fpm_port: '9000'
-    php_fpm_exporter_port: '9253'
-    php_allow_url_fopen: 'On'
-    php_allow_url_include: 'Off'
-    php_date_timezone: 'Asia/Shanghai'
-    php_default_socket_timeout: '60'
-    php_error_log: 'syslog'
-    php_expose_php: 'Off'
-    php_file_uploads: 'On'
-    php_max_execution_time: '60'
-    php_max_file_uploads: '20'
-    php_max_input_time: '60'
-    php_memory_limit: '256'
-    php_post_max_size: '2'
-    php_realpath_cache_size: '16'
-    php_upload_max_filesize: '5'
-    php_upload_tmp_dir: '/tmp'
-    php_emergency_restart_interval: '60'
-    php_emergency_restart_threshold: '20'
-    php_log_level: 'notice'
-    php_process_control_timeout: '10'
-    php_user: 'nobody'
-    php_group: 'nobody'
-    php_listen: '0.0.0.0'
-    php_listen_backlog: '16384'
-    php_listen_owner: 'nobody'
-    php_listen_group: 'nobody'
-    php_listen_mode: '0660'
-    php_pm: 'dynamic'
-    php_pm_max_requests: '300'
-    environments: 'Development'
-    tags:
-      subscription: 'default'
-      owner: 'nobody'
-      department: 'Infrastructure'
-      organization: 'The Company'
-      region: 'IDC01'
-    exporter_is_install: false
-    consul_public_register: false
-    consul_public_exporter_token: '00000000-0000-0000-0000-000000000000'
-    consul_public_http_prot: 'https'
-    consul_public_http_port: '8500'
-    consul_public_clients:
-      - '127.0.0.1'
+```yaml
+php_version: '56'
+php_fpm_port: '9000'
+php_fpm_exporter_port: '9253'
+php_allow_url_fopen: 'On'
+php_allow_url_include: 'Off'
+php_date_timezone: 'Asia/Shanghai'
+php_default_socket_timeout: '60'
+php_error_log: 'syslog'
+php_expose_php: 'Off'
+php_file_uploads: 'On'
+php_max_execution_time: '60'
+php_max_file_uploads: '20'
+php_max_input_time: '60'
+php_memory_limit: '256'
+php_post_max_size: '2'
+php_realpath_cache_size: '16'
+php_upload_max_filesize: '5'
+php_upload_tmp_dir: '/tmp'
+php_emergency_restart_interval: '60'
+php_emergency_restart_threshold: '20'
+php_log_level: 'notice'
+php_process_control_timeout: '10'
+php_user: 'nobody'
+php_group: 'nobody'
+php_listen_backlog: '16384'
+php_listen_owner: 'nobody'
+php_listen_group: 'nobody'
+php_listen_mode: '0660'
+php_pm: 'dynamic'
+php_pm_max_requests: '300'
+environments: 'Development'
+datacenter: 'dc01'
+domain: 'local'
+tags:
+  subscription: 'default'
+  owner: 'nobody'
+  department: 'Infrastructure'
+  organization: 'The Company'
+  region: 'China'
+exporter_is_install: false
+consul_public_register: false
+consul_public_exporter_token: '00000000-0000-0000-0000-000000000000'
+consul_public_http_prot: 'https'
+consul_public_http_port: '8500'
+consul_public_clients:
+  - '127.0.0.1'
+```
 
 ## License
 ![](https://img.shields.io/badge/MIT-purple.svg?style=for-the-badge)

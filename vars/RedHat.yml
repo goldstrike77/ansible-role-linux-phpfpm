@@ -20,5 +20,7 @@ php_packages:
   - 'php-pecl-redis4'
   - 'php-pdo'
   - 'php-pgsql'
+
+php_dependent_packages:
   - 'policycoreutils-python'
   - 'libselinux-utils'
