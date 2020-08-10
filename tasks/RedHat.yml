@@ -1,8 +1,8 @@
 ---
-- name: Include OS-specific variables
+- name: Include OS-specific variables.
   include_vars: '{{ ansible_os_family }}.yml'
 
-- name: Install the PHP dependents packages
+- name: Install the PHP dependents packages.
   yum:
     name: '{{ php_dependent_packages }}'
     state: 'present'
@@ -13,22 +13,31 @@
   retries: 5
   delay: 2
 
-- name: Add PHP YUM repositories
+- name: Add Remi PHP YUM repositories.
   yum_repository:
-    name: '{{ php_repo_name }}'
-    description: '{{ php_repo_name }} RPM repository for Enterprise Linux'
-    file: '{{ php_repo_name }}'
-    baseurl: '{{ php_repo_url }}'
+    name: '{{ php_remi_repo_name }}'
+    description: '{{ php_remi_repo_name }} RPM repository for Enterprise Linux'
+    file: '{{ php_remi_repo_name }}'
+    baseurl: '{{ php_remi_repo_url }}'
     gpgcheck: 'no'
     timeout: '60'
 
-- name: Install the PHP packages
+- name: Add Remi safe PHP YUM repositories.
+  yum_repository:
+    name: '{{ php_safe_repo_name }}'
+    description: '{{ php_safe_repo_name }} RPM repository for additonal packages'
+    file: '{{ php_safe_repo_name }}'
+    baseurl: '{{ php_safe_repo_url }}'
+    gpgcheck: 'no'
+    timeout: '60'
+
+- name: Install the PHP packages.
   yum:
-    name: 'php{{ php_version }}-{{ item }}'
+    name: '{{ php_packages }}'
+    enablerepo: '{{ php_remi_repo_name }},{{ php_safe_repo_name}}'
     state: 'present'
     validate_certs: 'no'
     disable_gpg_check: 'yes'
-  loop: '{{ php_packages|flatten(levels=1) }}'
   register: php_updated
   until: php_updated is succeeded
   retries: 5

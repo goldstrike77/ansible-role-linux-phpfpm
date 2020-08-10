@@ -38,7 +38,7 @@ This Ansible role installs PHP on linux operating system, including establishing
 
 The following list of supported the PHP releases:
 
-  * PHP 5.6, 7.x
+  * PHP 7.x
 
 ## Role variables
 ### Main parameters #
@@ -108,7 +108,7 @@ There are some variables in vars/main.yml:
 ### Hosts inventory file
 See tests/inventory for an example.
 
-    node01 ansible_host='192.168.1.10' php_version='56'
+    node01 ansible_host='192.168.1.10' php_version='70'
 
 ### Vars in role configuration
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
@@ -117,14 +117,14 @@ Including an example of how to use your role (for instance, with variables passe
 - hosts: all
   roles:
      - role: ansible-role-linux-phpfpm
-       php_version: '56'
+       php_version: '70'
 ```
 
 ### Combination of group vars and playbook
 You can also use the group_vars or the host_vars files for setting the variables needed for this role. File you should change: group_vars/all or host_vars/`group_name`
 
 ```yaml
-php_version: '56'
+php_version: '70'
 php_fpm_port: '9000'
 php_fpm_exporter_port: '9253'
 php_allow_url_fopen: 'On'

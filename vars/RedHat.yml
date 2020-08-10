@@ -1,6 +1,10 @@
 ---
-php_repo_name: 'remi'
-php_repo_url: "http://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/{{ansible_distribution_version.split('.')[0]}}/remi/{{ansible_architecture}}/"
+php_remi_repo_name: 'remi-php{{ php_version }}'
+php_remi_repo_url: 'http://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/{{ ansible_distribution_major_version }}/php{{ php_version }}/$basearch'
+
+php_safe_repo_name: 'remi-safe'
+php_safe_repo_url: 'http://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/{{ ansible_distribution_major_version }}/safe/$basearch'
+
 php_packages:
   - 'php'
   - 'php-bcmath'
@@ -17,7 +21,7 @@ php_packages:
   - 'php-pecl-apcu'
   - 'php-pecl-memcached'
   - 'php-pecl-mongodb'
-  - 'php-pecl-redis4'
+  - 'php-pecl-redis5'
   - 'php-pdo'
   - 'php-pgsql'
 

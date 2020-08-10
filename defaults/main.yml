@@ -1,7 +1,7 @@
 ---
 # General parameters #
 php_is_install: false # A boolean value, whether install the php-fpm.
-php_version: '56' # Specify the php-fpm version.
+php_version: '70' # Specify the php-fpm version.
 
 # Listen port #
 php_fpm_port: '9000' # php-fpm instance.

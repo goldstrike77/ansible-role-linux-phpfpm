@@ -1,11 +1,4 @@
 ---
-- name: Set PHP binary PATH parameters
-  lineinfile:
-    dest: '/etc/profile'
-    state: 'present'
-    regexp: '^source /opt/remi/php'
-    line: 'source /opt/remi/php{{ php_version }}/enable'
-
 - name: PHP configureation file transfer
   template:
     src: '{{ item.src }}.j2'
@@ -15,7 +8,7 @@
     group: 'root'
     mode: '0644'
   with_items:
-    - { src: 'php.ini',      dest: '/etc/opt/remi/php{{ php_version }}' }
-    - { src: 'php-fpm.conf', dest: '/etc/opt/remi/php{{ php_version }}' }
-    - { src: 'www.conf',     dest: '/etc/opt/remi/php{{ php_version }}/php-fpm.d' }
+    - { src: 'php.ini',      dest: '/etc/' }
+    - { src: 'php-fpm.conf', dest: '/etc/' }
+    - { src: 'www.conf',     dest: '/etc/php-fpm.d' }
   register: php_config

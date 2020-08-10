@@ -1,7 +1,7 @@
 ---
 - name: Ensure PHP-FPM service is enabled
   systemd:
-    name: 'php{{ php_version }}-php-fpm.service'
+    name: 'php-fpm.service'
     enabled: 'yes'
     state: 'restarted'
     daemon_reload: 'yes'
