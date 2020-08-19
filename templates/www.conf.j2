@@ -21,9 +21,9 @@
 ; Note: The user is mandatory. If the group is not set, the default user's group
 ;       will be used.
 ; RPM: apache user chosen to provide access to the same directories as httpd
-user = {{ php_user | default('nobody') }}
+user = {{ php_user | default('apache') }}
 ; RPM: Keep a group allowed to write in log dir.
-group = {{ php_group | default('nobody') }}
+group = {{ php_group | default('apache') }}
 
 ; The address on which to accept FastCGI requests.
 ; Valid syntaxes are:
@@ -45,8 +45,8 @@ listen.backlog = {{ php_listen_backlog | default('16384') }}
 ; permissions must be set in order to allow connections from a web server.
 ; Default Values: user and group are set as the running user
 ;                 mode is set to 0660
-listen.owner = {{ php_listen_owner | default('nobody') }}
-listen.group = {{ php_listen_group | default('nobody') }}
+listen.owner = {{ php_listen_owner | default('apache') }}
+listen.group = {{ php_listen_group | default('apache') }}
 listen.mode = {{ php_listen_mode | default('0660') }}
 
 ; When POSIX Access Control Lists are supported you can set them using

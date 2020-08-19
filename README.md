@@ -48,7 +48,7 @@ There are some variables in defaults/main.yml which can (Or needs to) be overrid
 * `php_version`: Specify the php-fpm version.
 
 ##### Listen port
-* `php_fpm_port`: php-fpm instance.
+* `php_fpm_port`: Defines Php-fpm instance listening port.
 * `php_fpm_exporter_port`: Prometheus exporter.
 
 ##### PHP Variables
@@ -146,11 +146,11 @@ php_emergency_restart_interval: '60'
 php_emergency_restart_threshold: '20'
 php_log_level: 'notice'
 php_process_control_timeout: '10'
-php_user: 'nobody'
-php_group: 'nobody'
+php_user: 'apache'
+php_group: 'apache'
 php_listen_backlog: '16384'
-php_listen_owner: 'nobody'
-php_listen_group: 'nobody'
+php_listen_owner: 'apache'
+php_listen_group: 'apache'
 php_listen_mode: '0660'
 php_pm: 'dynamic'
 php_pm_max_requests: '300'

@@ -4,7 +4,7 @@ php_is_install: false # A boolean value, whether install the php-fpm.
 php_version: '70' # Specify the php-fpm version.
 
 # Listen port #
-php_fpm_port: '9000' # php-fpm instance.
+php_fpm_port: '9000' # Defines Php-fpm instance listening port.
 php_fpm_exporter_port: '9253' # Prometheus exporter.
 
 # PHP Variables #
@@ -31,11 +31,11 @@ php_log_level: 'notice' # Error log level.
 php_process_control_timeout: '10' # Time limit for child processes to wait for a reaction on signals from master in seconds.
 
 # PHP-FPM POOL Variables #
-php_user: 'nobody' # Unix user of processes.
-php_group: 'nobody' # Unix group of processes.
+php_user: 'apache' # Unix user of processes.
+php_group: 'apache' # Unix group of processes.
 php_listen_backlog: '16384' # The maximum rate at which a server can accept new TCP connections on a socket.
-php_listen_owner: 'nobody' # Listen owner user.
-php_listen_group: 'nobody' # Listen owner group.
+php_listen_owner: 'apache' # Listen owner user.
+php_listen_group: 'apache' # Listen owner group.
 php_listen_mode: '0660' # Listen permissions.
 php_pm: 'dynamic' # Child process control manager.
 php_pm_max_requests: '300' # The number of requests each child process should execute before respawning.

@@ -5,8 +5,8 @@ After=network.target
 
 [Service]
 EnvironmentFile=-/etc/default/php-fpm_exporter
-User=nobody
-Group=nobody
+User=apache
+Group=apache
 Type=simple
 LimitNOFILE=4096
 LimitNPROC=4096

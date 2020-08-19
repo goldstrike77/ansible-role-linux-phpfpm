@@ -24,6 +24,8 @@ php_packages:
   - 'php-pecl-redis5'
   - 'php-pdo'
   - 'php-pgsql'
+  - 'php-ldap'
+  - 'php-imap'
 
 php_dependent_packages:
   - 'policycoreutils-python'
