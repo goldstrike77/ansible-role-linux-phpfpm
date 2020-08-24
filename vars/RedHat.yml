@@ -21,6 +21,7 @@ php_packages:
   - 'php-pecl-apcu'
   - 'php-pecl-memcached'
   - 'php-pecl-mongodb'
+  - 'php-pecl-imagick'
   - 'php-pecl-redis'
   - 'php-pdo'
   - 'php-pgsql'
