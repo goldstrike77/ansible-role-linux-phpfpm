@@ -2,7 +2,6 @@
 php_disable_functions: # Disable certain functions for security reasons
   - 'diskfreespace'
   - 'dl'
-  - 'exec'
   - 'fpaththru'
   - 'getmypid'
   - 'getmyuid'
@@ -49,7 +48,6 @@ php_disable_functions: # Disable certain functions for security reasons
   - 'proc_nice'
   - 'proc_open'
   - 'proc_terminate'
-  - 'set_time_limit'
   - 'shell_exec'
   - 'show_source'
   - 'source'
