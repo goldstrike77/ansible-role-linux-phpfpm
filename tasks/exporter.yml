@@ -1,5 +1,5 @@
 ---
-- name: PHP-FPM exporter program binary transfer
+- name: PHP-FPM exporter program binary transfer.
   unarchive:
     src: 'php-fpm_exporter.tar.xz'
     dest: '/usr/local/bin'
@@ -8,7 +8,7 @@
     mode: '0755'
   register: php_exporter_updated
 
-- name: PHP-FPM exporter configure file transfer
+- name: PHP-FPM exporter configure file transfer.
   template:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
@@ -21,7 +21,7 @@
     - { src: 'php-fpm_exporter.service.j2', dest: '/lib/systemd/system/php-fpm_exporter.service' }
   register: php_exporter_config
 
-- name: Ensure PHP-FPM exporter service is enabled
+- name: Ensure PHP-FPM exporter service is enabled.
   systemd:
     name: 'php-fpm_exporter.service'
     enabled: 'yes'
